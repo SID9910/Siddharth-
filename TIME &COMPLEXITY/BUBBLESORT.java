@@ -4,16 +4,14 @@ import java.util.*;
 public class Main {
 
   public static void bubbleSort(int[] arr) {
-    for(int i= arr.length-1 ;i>0;i--){
-      
-      for(int j=0;j<i;j++){
-
-        //aagr if true hoga swap kardo
-        if(isSmaller(arr,j+1,j)){
-          swap(arr,j+1,j);
-        }
-      }
-    }
+  
+   for(int itr=1;itr<=arr.length-1;itr++){
+     for(int j=0;j<arr.length-itr;j++){
+       if(isSmaller(arr,j+1,j)){
+         swap(arr,j+1,j);
+       }
+     }
+   }
 
     
   }
