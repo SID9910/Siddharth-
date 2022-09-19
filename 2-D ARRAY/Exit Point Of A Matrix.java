@@ -16,8 +16,7 @@ for(int i=0;i<n;i++){
 }
 int currcoln=0,currrow=0; //current column zero and current row zero
 
-//ye previous row,column isley banaya hai kyuki exit point se pehle vala point 
-//print ho jay taaki store ho jay
+
 int prevcoln=0,prevrow=0;//previous column zero and previous row zero
 
 //directions
