@@ -10,7 +10,7 @@ public static void main(String[] args) throws Exception {
    Scanner scn=new Scanner(System.in);
     int n1=scn.nextInt();
     int []arr1=new int[n1];
-    for(int i=0;i<n1;i++){               //input lena arr1 main
+    for(int i=0;i<n1;i++){        
         arr1[i]=scn.nextInt();
 
     }
@@ -19,7 +19,7 @@ public static void main(String[] args) throws Exception {
      int n2=scn.nextInt();
     int []arr2=new int[n2];
     for(int i=0;i<n2;i++){
-        arr2[i]=scn.nextInt();  //input lena arr2 main
+        arr2[i]=scn.nextInt();  
         
     }
     int[] res=new int[Math.max(n1,n2)+1];   //resultant ko dono number ka max +1 hoga kyuki carry last main bacha to bhi eek index badaega
