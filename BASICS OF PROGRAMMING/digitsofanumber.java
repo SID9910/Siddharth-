@@ -10,7 +10,7 @@ import java.util.*;
         int count=0;
         while(temp!=0){
         
-            temp=temp/10;                    //count karega ye loop digits kitni hai
+            temp=temp/10;                    /
             count=count+1;
         }
         int j=1;
