@@ -106,7 +106,7 @@ public class Main {
     return sum;
   }
 
-  //approach-2
+  //approach-2 pair approach
 static class TiltPair{
   int sum=0;
   int tiltsum =0;
