@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-
+//count sort
   public static void countSort(int[] arr, int min, int max) {
    int[] freq =new int[max-min+1];
    for(int i=0;i<arr.length;i++){
