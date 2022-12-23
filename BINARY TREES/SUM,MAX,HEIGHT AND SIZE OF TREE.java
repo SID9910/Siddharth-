@@ -78,7 +78,7 @@ public class Main {
     display(node.left);
     display(node.right);
   }
-//size
+//size of binary  tree 
   public static int size(Node node) {
    if(node ==null){
      return 0;
