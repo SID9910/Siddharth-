@@ -7,6 +7,7 @@ public static class Pair {
       this.state = state;
     }
   }
+  //nice
 
   public static void iterativePrePostInTraversal(Node node) {
     Pair p = new Pair(node,0);
