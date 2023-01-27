@@ -7,31 +7,28 @@ public class Main {
     ArrayList<Node> children = new ArrayList<>();
   }
 
-  //aasal main contruct ye code chalega nhi kyuki saare code main construct pehle se he bana hua hai
-  //taaki array paas karenge to tree dega vo fhir haam use karenge sabke ley us tree ko
-
   public static Node construct(int[] arr) {
-Node root = null;
-Stack<Node> stack = new Stack<>();
+    Stack<Node> st = new Stack<>();
+    Node root = new Node();
+    for(int val:arr){
+      if(val!=-1){
+        Node t = new Node();
+        t.data=val;
+        st.push(t);
+      }else{
+        Node temp =st.pop();
+        if(st.size()>0){
+          Node parent =st.peek();
+          parent.children.add(temp);
+        }else{
+          root=temp;
+        }
+      }
+      
 
-for(int val: arr){
-  if(val!=-1){
-    Node node = new Node(val);
-    stack.push(node);
-  }
-  else{
-    Node node = stack.pop();
-    if(stack.size()>0){
-      Node parent = stack.peek();
-      parent.children.add(node);
-
-    }else{
-      root=node;
+      }
+      return root;
     }
-  }
-}
-return root;
-  }
 
   public static int size(Node node) {
     int s = 0;
