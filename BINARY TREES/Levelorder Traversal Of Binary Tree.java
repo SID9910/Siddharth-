@@ -78,10 +78,77 @@ public class Main {
     display(node.left);
     display(node.right);
   }
-                  // 16-05-2022
-//jaise he node ke baad null aaega us time he new line per chale jao and 
-//and childrens ko add karne ke baad dubara null daal do 
-  public static void levelOrder(Node node) {
+    
+//parent ,child
+public static void levelOrder1(Node node){
+  Queue<Node> que = new ArrayDeque<>();
+  Queue<Node> cque = new ArrayDeque<>();
+  que.add(node);
+  while(que.size()>0){
+    Node temp =que.remove();
+    System.out.print(temp.data+" ");
+    if(temp.left!=null){
+      cque.add(temp.left);
+    }
+    if(temp.right!=null){
+      cque.add(temp.right);
+    }
+    if(que.size()==0){
+      que=cque;
+      cque =new ArrayDeque<>();
+      System.out.println();
+    }
+  }
+}
+//count approach
+public static void levelOrder2(Node node){
+  Queue<Node> que = new ArrayDeque<>();
+  que.add(node);
+  while(que.size()>0){
+int size =que.size();
+for(int i=0;i<size;i++){
+      Node temp =que.remove();
+    System.out.print(temp.data+ " ");
+    if(temp.left!=null){
+      que.add(temp.left);
+    }
+    if(temp.right!=null){
+      que.add(temp.right);
+    }
+}  
+System.out.println();   
+  }
+
+}
+//delimeter
+public static void levelOrder3(Node node){
+  Queue<Node> que = new ArrayDeque<>();
+  Node dumy=new Node(-1,null,null);
+  que.add(node);
+  que.add(dumy);
+  while(que.size()>0){
+    Node temp =que.remove();
+    if(temp!=dumy){
+      System.out.print(temp.data+ " ");
+      if(temp.left!=null){
+      que.add(temp.left);
+      }
+      if(temp.right!=null){
+        que.add(temp.right);
+      }
+
+    }else{
+      System.out.println();
+      if(que.size()>0){
+        que.add(temp);
+      }
+      continue;
+    }
+  }
+}
+
+//isme aagr arrayDeque ki jagah linkedlist looge to usme null se kaam ho jaega dumy banana nhi padega
+  public static void levelOrder4(Node node) {
      Queue<Node> queue = new LinkedList<>();
         queue.add(node);
         queue.add(null); //har node ke baad null daal  o
@@ -102,11 +169,13 @@ public class Main {
               if(queue.size()>0){
                   System.out.println();
                   queue.add(null);
+                  
               }
           }
 
         }
   }
+
 
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -122,7 +191,10 @@ public class Main {
     }
 
     Node root = construct(arr);
-    levelOrder(root);
+    levelOrder1(root);
+     levelOrder2(root);
+      levelOrder3(root);
+       levelOrder4(root);
   }
 
 }
