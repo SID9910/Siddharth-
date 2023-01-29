@@ -112,8 +112,8 @@ static boolean TreeIsbalanced =true;
 
     Node root = construct(arr);
     
-    int ht= 0;
-    ht = Isbalanced(root);
+    
+    int ht = Isbalanced(root);
     System.out.println(TreeIsbalanced);
   }
 }

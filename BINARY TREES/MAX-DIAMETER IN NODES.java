@@ -169,16 +169,16 @@ mp.height =Math.max(leftPair.height ,rightPair.height)+1;
 
     Node root = construct(arr);
 
-    // int ht= 0;
-    // ht = diameter1(root);
-    // System.out.println(dia);
+    int ht= 0;
+    ht = diameter1(root);
+    System.out.println(dia);
 
     // DiaMover dm =new DiaMover();
     // diameter2(root ,dm);
     // System.out.println(dm.dia);
 
-DiaPair dp =diameter3(root);
-System.out.print(dp.dia);
+// DiaPair dp =diameter3(root);
+// System.out.print(dp.dia);
 
   }
 
