@@ -1,17 +1,50 @@
-
-
 import java.io.*;
 import java.util.*;
 
 public class Main {
-   
- 
-//main code hai ye
- private static class Node {
+  private static class Node {
     int data;
     ArrayList<Node> children = new ArrayList<>();
   }
-   public static ArrayList<Integer> nodeToRootPath(Node node, int data) {
+
+  public static void display(Node node) {
+    String str = node.data + " -> ";
+    for (Node child : node.children) {
+      str += child.data + ", ";
+    }
+    str += ".";
+    System.out.println(str);
+
+    for (Node child : node.children) {
+      display(child);
+    }
+  }
+
+  public static Node construct(int[] arr) {
+    Node root = null;
+
+    Stack<Node> st = new Stack<>();
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] == -1) {
+        st.pop();
+      } else {
+        Node t = new Node();
+        t.data = arr[i];
+
+        if (st.size() > 0) {
+          st.peek().children.add(t);
+        } else {
+          root = t;
+        }
+
+        st.push(t);
+      }
+    }
+
+    return root;
+  }
+
+  public static ArrayList<Integer> nodeToRootPath(Node node, int data) {
     if (node.data == data) {
       ArrayList<Integer> path = new ArrayList<>();
       path.add(node.data);
@@ -29,26 +62,21 @@ public class Main {
     return new ArrayList<>();
   }
 
-//lowest common ansector
   public static int lca(Node node, int d1, int d2) {
-  ArrayList<Integer> path1 = nodeToRootPath(node, d1);
-  ArrayList<Integer> path2 = nodeToRootPath(node , d2);
-  //isme size aajaega
-  int i = path1.size()-1;
-  int j = path2.size()-1;
-  //jaab taak size hai
-  while(i>=0 && j>=0){
-    if(path1.get(i)==path2.get(j)){
-      i--;
-      j--;
-    }else{
-      break;
-    }
+    ArrayList<Integer> path1 =nodeToRootPath(node,d1);
+    ArrayList<Integer> path2 =nodeToRootPath(node,d2);
 
-  }
-  // agla index aaajega isme
-  int lca =path1.get(i+1);
-  return lca;
+    int i=path1.size()-1;
+    int j=path2.size()-1;
+    while(i>=0 && j>=0 && path1.get(i)==path2.get(j)){
+      
+        i--;
+        j--;
+      
+    }
+    int lca =path1.get(i+1);
+    return lca;
+
   }
 
   public static void main(String[] args) throws Exception {
@@ -69,50 +97,4 @@ public class Main {
     // display(root);
   }
 
- 
-
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
- 

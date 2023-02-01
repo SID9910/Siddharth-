@@ -1,27 +1,69 @@
-  
- //calling ceil and floor
- static int ceil=Integer.MAX_VALUE;
-  static int floor=Integer.MIN_VALUE;
-  public static void ceilAndFloor(Node node, int data) {
-    if(node.data>data){
-   if(node.data<ceil){
-     ceil= node.data;
-   }
-       }
+import java.io.*;
+import java.util.*;
 
-  if(node.data<data){
-    if(node.data>floor){
-      floor =node.data;
+public class Main {
+  private static class Node {
+    int data;
+    ArrayList<Node> children = new ArrayList<>();
+  }
+
+  public static void display(Node node) {
+    String str = node.data + " -> ";
+    for (Node child : node.children) {
+      str += child.data + ", ";
+    }
+    str += ".";
+    System.out.println(str);
+
+    for (Node child : node.children) {
+      display(child);
     }
   }
 
-  for(Node child:node.children){
-    ceilAndFloor(child ,data);
+  public static Node construct(int[] arr) {
+    Node root = null;
 
-  }
+    Stack<Node> st = new Stack<>();
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] == -1) {
+        st.pop();
+      } else {
+        Node t = new Node();
+        t.data = arr[i];
+
+        if (st.size() > 0) {
+          st.peek().children.add(t);
+        } else {
+          root = t;
+        }
+
+        st.push(t);
+      }
+    }
+
+    return root;
   }
 
-  //kth largest 
+  static int floor =Integer.MIN_VALUE;
+  static int ceil =Integer.MAX_VALUE;
+   public static void ceilAndFloor(Node node ,int data){
+     if(node.data>data){
+       if(ceil>node.data){
+         ceil=node.data;
+       }
+     }
+     if(node.data<data){
+       if(floor<node.data){
+         floor =node.data;
+       }
+
+     }
+     for(Node child:node.children){
+       ceilAndFloor(child ,data);
+     }
+   }
+
+  
 
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -35,12 +77,13 @@
     int k = Integer.parseInt(br.readLine());
 
     Node root = construct(arr);
-   int kthlargest= Integer.MAX_VALUE;
-   for(int i=0 ;i<k ;i++){
-     ceilAndFloor(root, kthlargest);
-     kthlargest =floor;
-     floor =Integer.MIN_VALUE;
-     
-   }
-   System.out.println(kthlargest);
+  int data=Integer.MAX_VALUE;
+  for(int i=0;i<k;i++){
+    ceilAndFloor(root,data);
+    data =floor;
+    floor=Integer.MIN_VALUE; 
   }
+  System.out.println(data);
+  }
+
+}
