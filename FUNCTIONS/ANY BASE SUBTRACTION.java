@@ -29,7 +29,7 @@ import java.util.*;
            res+=(temp*multiplier);
            borrow=0;  //imp
        }
-       multiplier*=10;//10 se badate jao
+       multiplier*=10;//10 se badate jao isko
        n1/=10;//numbr kaam karte jao
        n2/=10;
        
